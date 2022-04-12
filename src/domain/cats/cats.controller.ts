@@ -8,15 +8,18 @@ import {
   Param,
   ParseIntPipe,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { RolesGuard } from 'src/guard/roles.guard';
+import { LoggingInterceptor } from 'src/interceptor/logging.intercepter';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat-dto';
-import { Cat } from './interfaces/cat.interface';
+import { Cat } from './model/cat.interface';
 
 @Controller('cats')
 // guard を適用。メソッドレベルでも適用可能
 @UseGuards(RolesGuard)
+@UseInterceptors(LoggingInterceptor)
 export class CatsController {
   constructor(private catsService: CatsService) {}
 
