@@ -1,10 +1,7 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 
-@Injectable()
-export class CorsMiddleware implements NestMiddleware {
-  use(req: Request, res: Response, next: NextFunction) {
-    console.log('Cors Setting');
-    next();
-  }
+export function cors(req: Request, res: Response, next: NextFunction) {
+  console.log('cors setting');
+  next();
 }
