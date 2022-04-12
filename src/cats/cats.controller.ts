@@ -7,13 +7,16 @@ import {
   HttpStatus,
   Param,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
+import { RolesGuard } from 'src/guard/roles.guard';
 import { CatsService } from './cats.service';
-import { ValidationPipe } from './customPipe/validation.pipe';
 import { CreateCatDto } from './dto/create-cat-dto';
 import { Cat } from './interfaces/cat.interface';
 
 @Controller('cats')
+// guard を適用。メソッドレベルでも適用可能
+@UseGuards(RolesGuard)
 export class CatsController {
   constructor(private catsService: CatsService) {}
 
