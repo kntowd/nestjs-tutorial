@@ -1,6 +1,6 @@
-import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ValidationPipe } from './cats/customPipe/validation.pipe';
 import { cors } from './common/middleware/cors.middleware';
 
 async function bootstrap() {
